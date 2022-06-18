@@ -43,4 +43,3 @@ Add additional notes about how to deploy this on a live system
 
 * [Spring Boot 2](https://projects.spring.io/spring-boot/)
 * [Spring Framework 5](https://projects.spring.io/spring-framework/)
-
