@@ -15,14 +15,14 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class Link extends Auditable {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
     @NotNull
     private String title;
     @NotNull
     private String url;
-    @OneToMany(mappedBy = "Link")
+
+    @OneToMany(mappedBy = "link")
     private List<Comment> comments = new ArrayList<>();
 
 }
