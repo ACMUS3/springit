@@ -1,21 +1,15 @@
 package com.arthur.springit.domain;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 public class Comment extends Auditable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NonNull
     private String body;
@@ -23,5 +17,14 @@ public class Comment extends Auditable {
     @ManyToOne
     @NonNull
     private Link link;
+
+    public Comment(@NonNull String body, @NonNull Link link) {
+        this.body = body;
+        this.link = link;
+    }
+
+    public Comment() {
+
+    }
 }
 

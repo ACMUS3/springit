@@ -1,21 +1,17 @@
 package com.arthur.springit.domain;
 
 import com.sun.istack.NotNull;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
 public class Link extends Auditable {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
     private String title;
@@ -24,5 +20,19 @@ public class Link extends Auditable {
 
     @OneToMany(mappedBy = "link")
     private List<Comment> comments = new ArrayList<>();
+
+    public Link(String title, String url) {
+        this.title = title;
+        this.url = url;
+    }
+
+    public Link() {
+
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+    }
+
 
 }
